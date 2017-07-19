@@ -5,6 +5,10 @@ VisualStudioVersion = 15.0.26430.16
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContactManager.Data", "ContactManager.Data\ContactManager.Data.csproj", "{6DAC0728-7CD9-43AC-A27F-42EBF7373512}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContactManager.UserInterface", "ContactManager.UserInterface\ContactManager.UserInterface.csproj", "{A884F106-6F1B-4E1C-B8AB-B61E76B9B529}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContactManager.Model", "ContactManager.Model\ContactManager.Model.csproj", "{DF58AD53-7931-4621-8409-9DFAE5AC623B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{6DAC0728-7CD9-43AC-A27F-42EBF7373512}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6DAC0728-7CD9-43AC-A27F-42EBF7373512}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6DAC0728-7CD9-43AC-A27F-42EBF7373512}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A884F106-6F1B-4E1C-B8AB-B61E76B9B529}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A884F106-6F1B-4E1C-B8AB-B61E76B9B529}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A884F106-6F1B-4E1C-B8AB-B61E76B9B529}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A884F106-6F1B-4E1C-B8AB-B61E76B9B529}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DF58AD53-7931-4621-8409-9DFAE5AC623B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DF58AD53-7931-4621-8409-9DFAE5AC623B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DF58AD53-7931-4621-8409-9DFAE5AC623B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DF58AD53-7931-4621-8409-9DFAE5AC623B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

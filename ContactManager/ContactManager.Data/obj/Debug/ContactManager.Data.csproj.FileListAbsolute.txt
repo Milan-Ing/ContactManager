@@ -1,0 +1,10 @@
+C:\Users\ING\documents\visual studio 2017\Projects\ContactManager\ContactManager.Data\bin\Debug\ContactManager.Data.dll.config
+C:\Users\ING\documents\visual studio 2017\Projects\ContactManager\ContactManager.Data\bin\Debug\ContactManager.Data.dll
+C:\Users\ING\documents\visual studio 2017\Projects\ContactManager\ContactManager.Data\bin\Debug\ContactManager.Data.pdb
+C:\Users\ING\documents\visual studio 2017\Projects\ContactManager\ContactManager.Data\bin\Debug\EntityFramework.dll
+C:\Users\ING\documents\visual studio 2017\Projects\ContactManager\ContactManager.Data\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\ING\documents\visual studio 2017\Projects\ContactManager\ContactManager.Data\bin\Debug\EntityFramework.xml
+C:\Users\ING\documents\visual studio 2017\Projects\ContactManager\ContactManager.Data\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\ING\documents\visual studio 2017\Projects\ContactManager\ContactManager.Data\obj\Debug\ContactManager.Data.csprojResolveAssemblyReference.cache
+C:\Users\ING\documents\visual studio 2017\Projects\ContactManager\ContactManager.Data\obj\Debug\ContactManager.Data.dll
+C:\Users\ING\documents\visual studio 2017\Projects\ContactManager\ContactManager.Data\obj\Debug\ContactManager.Data.pdb

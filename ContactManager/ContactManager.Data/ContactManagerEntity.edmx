@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="ContactManagerDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="ContactManagerDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="ConactTypes">
           <Key>
             <PropertyRef Name="ContactTypeID" />
@@ -22,6 +22,7 @@
           <Property Name="LastName" Type="nvarchar" MaxLength="50" />
           <Property Name="Address" Type="nvarchar" MaxLength="512" />
           <Property Name="InsertDate" Type="datetime" Nullable="false" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <Association Name="FK_Contacts_ConactTypes">
           <End Role="ConactTypes" Type="Self.ConactTypes" Multiplicity="1" />
@@ -43,18 +44,25 @@
             <End Role="Contacts" EntitySet="Contacts" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="ContactManagerDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="ContactManagerDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ConactTypes" EntityType="ContactManagerDBModel.ConactType" />
+          <EntitySet Name="Contacts" EntityType="ContactManagerDBModel.Contact" />
+          <AssociationSet Name="FK_Contacts_ConactTypes" Association="ContactManagerDBModel.FK_Contacts_ConactTypes">
+            <End Role="ConactType" EntitySet="ConactTypes" />
+            <End Role="Contact" EntitySet="Contacts" />
+          </AssociationSet>
+        </EntityContainer>
         <EntityType Name="ConactType">
           <Key>
             <PropertyRef Name="ContactTypeID" />
           </Key>
           <Property Name="ContactTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Caption" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Contacts" Relationship="Self.FK_Contacts_ConactTypes" FromRole="ConactTypes" ToRole="Contacts" />
+          <NavigationProperty Name="Contacts" Relationship="ContactManagerDBModel.FK_Contacts_ConactTypes" FromRole="ConactType" ToRole="Contact" />
         </EntityType>
         <EntityType Name="Contact">
           <Key>
@@ -62,32 +70,25 @@
           </Key>
           <Property Name="ContactID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ContactTypeID" Type="Int32" Nullable="false" />
-          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Address" Type="String" MaxLength="512" FixedLength="false" Unicode="true" />
           <Property Name="InsertDate" Type="DateTime" Nullable="false" Precision="3" />
-          <NavigationProperty Name="ConactType" Relationship="Self.FK_Contacts_ConactTypes" FromRole="Contacts" ToRole="ConactTypes" />
+          <Property Name="Phone" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ConactType" Relationship="ContactManagerDBModel.FK_Contacts_ConactTypes" FromRole="Contact" ToRole="ConactType" />
         </EntityType>
         <Association Name="FK_Contacts_ConactTypes">
-          <End Role="ConactTypes" Type="Self.ConactType" Multiplicity="1" />
-          <End Role="Contacts" Type="Self.Contact" Multiplicity="*" />
+          <End Type="ContactManagerDBModel.ConactType" Role="ConactType" Multiplicity="1" />
+          <End Type="ContactManagerDBModel.Contact" Role="Contact" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="ConactTypes">
+            <Principal Role="ConactType">
               <PropertyRef Name="ContactTypeID" />
             </Principal>
-            <Dependent Role="Contacts">
+            <Dependent Role="Contact">
               <PropertyRef Name="ContactTypeID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="ContactManagerDBEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="ConactTypes" EntityType="Self.ConactType" />
-          <EntitySet Name="Contacts" EntityType="Self.Contact" />
-          <AssociationSet Name="FK_Contacts_ConactTypes" Association="Self.FK_Contacts_ConactTypes">
-            <End Role="ConactTypes" EntitySet="ConactTypes" />
-            <End Role="Contacts" EntitySet="Contacts" />
-          </AssociationSet>
-        </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -97,20 +98,21 @@
           <EntitySetMapping Name="ConactTypes">
             <EntityTypeMapping TypeName="ContactManagerDBModel.ConactType">
               <MappingFragment StoreEntitySet="ConactTypes">
-                <ScalarProperty Name="ContactTypeID" ColumnName="ContactTypeID" />
                 <ScalarProperty Name="Caption" ColumnName="Caption" />
+                <ScalarProperty Name="ContactTypeID" ColumnName="ContactTypeID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Contacts">
             <EntityTypeMapping TypeName="ContactManagerDBModel.Contact">
               <MappingFragment StoreEntitySet="Contacts">
-                <ScalarProperty Name="ContactID" ColumnName="ContactID" />
-                <ScalarProperty Name="ContactTypeID" ColumnName="ContactTypeID" />
-                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
-                <ScalarProperty Name="LastName" ColumnName="LastName" />
-                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
                 <ScalarProperty Name="InsertDate" ColumnName="InsertDate" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="ContactTypeID" ColumnName="ContactTypeID" />
+                <ScalarProperty Name="ContactID" ColumnName="ContactID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

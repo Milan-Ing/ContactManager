@@ -1,0 +1,13 @@
+C:\Users\ING\Documents\Visual Studio 2017\Projects\ContactManager\ContactManager.Model\obj\Debug\ContactManager.Model.csprojResolveAssemblyReference.cache
+C:\Users\ING\Documents\Visual Studio 2017\Projects\ContactManager\ContactManager.Model\bin\Debug\ContactManager.Model.dll.config
+C:\Users\ING\Documents\Visual Studio 2017\Projects\ContactManager\ContactManager.Model\bin\Debug\ContactManager.Model.dll
+C:\Users\ING\Documents\Visual Studio 2017\Projects\ContactManager\ContactManager.Model\bin\Debug\ContactManager.Model.pdb
+C:\Users\ING\Documents\Visual Studio 2017\Projects\ContactManager\ContactManager.Model\bin\Debug\ContactManager.Data.dll
+C:\Users\ING\Documents\Visual Studio 2017\Projects\ContactManager\ContactManager.Model\bin\Debug\EntityFramework.dll
+C:\Users\ING\Documents\Visual Studio 2017\Projects\ContactManager\ContactManager.Model\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\ING\Documents\Visual Studio 2017\Projects\ContactManager\ContactManager.Model\bin\Debug\ContactManager.Data.pdb
+C:\Users\ING\Documents\Visual Studio 2017\Projects\ContactManager\ContactManager.Model\bin\Debug\ContactManager.Data.dll.config
+C:\Users\ING\Documents\Visual Studio 2017\Projects\ContactManager\ContactManager.Model\bin\Debug\EntityFramework.xml
+C:\Users\ING\Documents\Visual Studio 2017\Projects\ContactManager\ContactManager.Model\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\ING\Documents\Visual Studio 2017\Projects\ContactManager\ContactManager.Model\obj\Debug\ContactManager.Model.dll
+C:\Users\ING\Documents\Visual Studio 2017\Projects\ContactManager\ContactManager.Model\obj\Debug\ContactManager.Model.pdb

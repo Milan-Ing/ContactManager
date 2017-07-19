@@ -20,6 +20,7 @@ namespace ContactManager.Data
         public string LastName { get; set; }
         public string Address { get; set; }
         public System.DateTime InsertDate { get; set; }
+        public string Phone { get; set; }
     
         public virtual ConactType ConactType { get; set; }
     }

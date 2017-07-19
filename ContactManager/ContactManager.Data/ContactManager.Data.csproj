@@ -49,10 +49,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ConactType.cs">
+      <DependentUpon>ContactManagerEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Contact.cs">
+      <DependentUpon>ContactManagerEntity.tt</DependentUpon>
+    </Compile>
     <Compile Include="ContactManagerEntity.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ContactManagerEntity.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ContactManagerEntity.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ContactManagerEntity.tt</DependentUpon>
     </Compile>
     <Compile Include="ContactManagerEntity.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -62,26 +73,30 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.Config" />
     <EntityDeploy Include="ContactManagerEntity.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>ContactManagerEntity.Designer.cs</LastGenOutput>
     </EntityDeploy>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.Config" />
     <None Include="ContactManagerEntity.edmx.diagram">
       <DependentUpon>ContactManagerEntity.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="ContactManagerEntity.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>ContactManagerEntity.Context.cs</LastGenOutput>
-    </Content>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+    <Content Include="ContactManagerEntity.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ContactManagerEntity.edmx</DependentUpon>
+      <LastGenOutput>ContactManagerEntity.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="ContactManagerEntity.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ContactManagerEntity.edmx</DependentUpon>
+      <LastGenOutput>ContactManagerEntity.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
