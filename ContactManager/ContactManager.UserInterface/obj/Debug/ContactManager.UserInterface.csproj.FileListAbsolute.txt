@@ -17,3 +17,4 @@ C:\Users\ING\Documents\Visual Studio 2017\Projects\ContactManager\ContactManager
 C:\Users\ING\Documents\Visual Studio 2017\Projects\ContactManager\ContactManager.UserInterface\bin\Debug\ContactManager.Model.dll
 C:\Users\ING\Documents\Visual Studio 2017\Projects\ContactManager\ContactManager.UserInterface\bin\Debug\ContactManager.Model.pdb
 C:\Users\ING\Documents\Visual Studio 2017\Projects\ContactManager\ContactManager.UserInterface\bin\Debug\ContactManager.Model.dll.config
+C:\Users\ING\Documents\Visual Studio 2017\Projects\ContactManager\ContactManager.UserInterface\obj\Debug\ContactManager.UserInterface.FormContact.resources

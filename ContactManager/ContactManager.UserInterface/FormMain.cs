@@ -21,13 +21,34 @@ namespace ContactManager.UserInterface
             InitializeComponent();
             Contacts = ContactsService.GetContacts();
             dataGridContacts.DataSource = Contacts;
-            dataGridContacts.Columns[0].Visible = false;
-            dataGridContacts.Columns[1].Visible = false;
+            dataGridContacts.Columns["ContactID"].Visible = false;
+            dataGridContacts.Columns["ContactTypeID"].Visible = false;
+            dataGridContacts.Columns["ContactType"].Name = "Contact type";
         }
 
         private void btnClose_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            if (dataGridContacts.SelectedRows.Count != 1)
+                return;
+            var frm = new FormContact();
+            frm.Contact = (ContactModel)dataGridContacts.CurrentRow.DataBoundItem;
+            frm.FillTextBoxes();
+            frm.ShowDialog();
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            if (dataGridContacts.SelectedRows.Count != 1)
+                return;
+            var contact = (ContactModel)dataGridContacts.CurrentRow.DataBoundItem;
+            Contacts.Remove(contact);
+            dataGridContacts.DataSource = Contacts;
+            ContactsService.DeleteContact(contact);
         }
     }
 }
