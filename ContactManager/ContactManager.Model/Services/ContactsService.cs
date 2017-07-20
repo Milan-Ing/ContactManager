@@ -18,10 +18,7 @@ namespace ContactManager.Model.Services
 
                 foreach (var c in context.Contacts)
                 {
-                    var contactType = "";
-                    if (c.ContactTypeID == 1) contactType = "Family";
-                    if (c.ContactTypeID == 2) contactType = "Friends";
-                    if (c.ContactTypeID == 3) contactType = "Work";
+                    var type = context.ConactTypes.Where(x => x.ContactTypeID == c.ContactTypeID).First();
 
                     contacts.Add(new ContactModel
                     {
@@ -32,7 +29,7 @@ namespace ContactManager.Model.Services
                         InsertDate = c.InsertDate,
                         ContactID = c.ContactID,
                         ContactTypeID = c.ContactTypeID,
-                        ContactType = contactType
+                        ContactType = type.Caption
                     });
                 }
 

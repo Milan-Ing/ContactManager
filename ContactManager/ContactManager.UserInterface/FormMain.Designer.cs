@@ -34,6 +34,7 @@
             this.btnUpdate = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
+            this.btnExport = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridContacts)).BeginInit();
             this.SuspendLayout();
             // 
@@ -99,12 +100,24 @@
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
+            // btnExport
+            // 
+            this.btnExport.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExport.Location = new System.Drawing.Point(17, 411);
+            this.btnExport.Name = "btnExport";
+            this.btnExport.Size = new System.Drawing.Size(75, 23);
+            this.btnExport.TabIndex = 6;
+            this.btnExport.Text = "Export";
+            this.btnExport.UseVisualStyleBackColor = true;
+            this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSteelBlue;
             this.ClientSize = new System.Drawing.Size(677, 447);
+            this.Controls.Add(this.btnExport);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnUpdate);
@@ -129,6 +142,7 @@
         private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnClose;
+        private System.Windows.Forms.Button btnExport;
     }
 }
 

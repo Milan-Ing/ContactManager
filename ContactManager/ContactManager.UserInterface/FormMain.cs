@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -71,6 +72,23 @@ namespace ContactManager.UserInterface
                 dataGridContacts.Update();
                 dataGridContacts.Refresh();
                 SetDataGridOptions();
+            }
+        }
+
+        private void btnExport_Click(object sender, EventArgs e)
+        {
+            Export();
+        }
+
+        public void Export()
+        {
+            using (StreamWriter sw = new StreamWriter("Export.txt"))
+            {
+                foreach (var c in Contacts)
+                {
+                    string toWrite = c.FirstName + ";" + c.LastName + ";" + c.Address + ";" + c.Phone + ";" + c.InsertDate.ToString();
+                    sw.WriteLine(toWrite);
+                }
             }
         }
     }
