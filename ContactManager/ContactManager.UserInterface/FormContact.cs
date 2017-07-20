@@ -14,7 +14,13 @@ namespace ContactManager.UserInterface
 {
     public partial class FormContact : Form
     {
+        #region Properties
         private bool AddOrUpdate { get; set; }
+
+        public ContactModel Contact { get; set; }
+
+        public List<ContactTypeModel> Types { get; set; }
+        #endregion
 
         public FormContact()
         {
@@ -34,10 +40,21 @@ namespace ContactManager.UserInterface
             btnSubmit.Text = "Submit";
         }
 
-        public ContactModel Contact { get; set; }
+        #region EventHandlers
+        private void btnSubmit_Click(object sender, EventArgs e)
+        {
+            if (!AddOrUpdate)
+            {
+                AddContact();
+            }
+            else
+            {
+                UpdateContact();
+            }
+        }
+        #endregion
 
-        public List<ContactTypeModel> Types { get; set; }
-
+        #region Functions
         public void FillTextBoxes()
         {
             txtFName.Text = Contact.FirstName;
@@ -85,17 +102,6 @@ namespace ContactManager.UserInterface
             };
             ContactsService.UpdateContact(updated);
         }
-
-        private void btnSubmit_Click(object sender, EventArgs e)
-        {
-            if (!AddOrUpdate)
-            {
-                AddContact();
-            }
-            else
-            {
-                UpdateContact();
-            }
-        }
+        #endregion        
     }
 }

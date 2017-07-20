@@ -11,7 +11,7 @@ namespace ContactManager.Model.Services
     public class ContactsService
     {
         public static List<ContactModel> GetContacts()
-        {
+        { //vraca sve kontake za prikaz
             using (var context = new ContactManagerDBEntities())
             {
                 List<ContactModel> contacts = new List<ContactModel>();
@@ -38,7 +38,7 @@ namespace ContactManager.Model.Services
         }
 
         public static void DeleteContact(ContactModel c)
-        {
+        { //brise 1 kontakt iz baze
             using (var context = new ContactManagerDBEntities())
             {
                 var toDelete = context.Contacts.Where(x => x.ContactID == c.ContactID).First();
@@ -49,7 +49,7 @@ namespace ContactManager.Model.Services
         }
 
         public static void DeleteAllContacts()
-        {
+        { //brise sve kontakte iz baze
             using (var context = new ContactManagerDBEntities())
             {
                 context.Contacts.RemoveRange(context.Contacts);
@@ -59,7 +59,7 @@ namespace ContactManager.Model.Services
         }
 
         public static void AddContact(ContactModel c)
-        {
+        { //dodaje kontakt u bazu
             using (var context = new ContactManagerDBEntities())
             {
                 Contact toAdd = new Contact
@@ -78,7 +78,7 @@ namespace ContactManager.Model.Services
         }
 
         public static void ImportContacts(List<ContactModel> contacts)
-        {
+        { //preuzima listu kontakta ucitanu iz fajla u upisuje ih u bazu
             using (var context = new ContactManagerDBEntities())
             {
                 List<Contact> toAdd = new List<Contact>();
@@ -104,7 +104,7 @@ namespace ContactManager.Model.Services
         }
 
         public static void UpdateContact(ContactModel c)
-        {
+        { //azuriranje kontakta
             using (var context = new ContactManagerDBEntities())
             {
                 Contact toUpdate = context.Contacts.Where(x => x.ContactID == c.ContactID).FirstOrDefault();

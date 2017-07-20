@@ -15,7 +15,9 @@ namespace ContactManager.UserInterface
 {
     public partial class FormMain : Form
     {
+        #region Properties
         public List<ContactModel> Contacts { get; set; }
+        #endregion
 
         public FormMain()
         {
@@ -23,18 +25,10 @@ namespace ContactManager.UserInterface
             SetDataGridOptions();
         }
 
+        #region EventHandlers
         private void btnClose_Click(object sender, EventArgs e)
         {
             Close();
-        }
-
-        public void SetDataGridOptions()
-        {
-            Contacts = ContactsService.GetContacts();
-            dataGridContacts.DataSource = Contacts;
-            dataGridContacts.Columns["ContactID"].Visible = false;
-            dataGridContacts.Columns["ContactTypeID"].Visible = false;
-            dataGridContacts.Columns["ContactType"].Name = "Contact type";
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
@@ -80,6 +74,24 @@ namespace ContactManager.UserInterface
             Export();
         }
 
+        private void btnImport_Click(object sender, EventArgs e)
+        {
+            Import();
+        }
+
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            ContactsService.DeleteAllContacts();
+            Contacts = null;
+            dataGridContacts.DataSource = null;
+            dataGridContacts.Update();
+            dataGridContacts.Refresh();
+            MessageBox.Show("Successfully deleted all contacts!", "Delete status", MessageBoxButtons.OKCancel);
+        }
+        #endregion
+
+
+        #region Functions
         public void Export()
         {
             using (StreamWriter sw = new StreamWriter("Export.txt"))
@@ -90,11 +102,20 @@ namespace ContactManager.UserInterface
                     sw.WriteLine(toWrite);
                 }
 
-                MessageBox.Show("Successfully exported to file!","Export status", MessageBoxButtons.OKCancel);
+                MessageBox.Show("Successfully exported to file!", "Export status", MessageBoxButtons.OKCancel);
             }
         }
 
-        private void btnImport_Click(object sender, EventArgs e)
+        public void SetDataGridOptions()
+        {
+            Contacts = ContactsService.GetContacts();
+            dataGridContacts.DataSource = Contacts;
+            dataGridContacts.Columns["ContactID"].Visible = false;
+            dataGridContacts.Columns["ContactTypeID"].Visible = false;
+            dataGridContacts.Columns["ContactType"].Name = "Contact type";
+        }
+
+        public void Import()
         {
             OpenFileDialog ofd = new OpenFileDialog();
             ofd.Filter = "Text files (*.txt)|*.txt";
@@ -114,7 +135,7 @@ namespace ContactManager.UserInterface
                             FirstName = importData[0],
                             LastName = importData[1],
                             Address = importData[2],
-                            Phone = importData[3],                            
+                            Phone = importData[3],
                             InsertDate = DateTime.Parse(importData[4]),
                             ContactTypeID = Int32.Parse(importData[5])
                         };
@@ -130,15 +151,6 @@ namespace ContactManager.UserInterface
                 }
             }
         }
-
-        private void btnClear_Click(object sender, EventArgs e)
-        {
-            ContactsService.DeleteAllContacts();
-            Contacts = null;
-            dataGridContacts.DataSource = null;
-            dataGridContacts.Update();
-            dataGridContacts.Refresh();
-            MessageBox.Show("Successfully deleted all contacts!", "Delete status", MessageBoxButtons.OKCancel);
-        }
+        #endregion
     }
 }
