@@ -86,10 +86,59 @@ namespace ContactManager.UserInterface
             {
                 foreach (var c in Contacts)
                 {
-                    string toWrite = c.FirstName + ";" + c.LastName + ";" + c.Address + ";" + c.Phone + ";" + c.InsertDate.ToString();
+                    string toWrite = c.FirstName + ";" + c.LastName + ";" + c.Address + ";" + c.Phone + ";" + c.InsertDate.ToString() + ";" + c.ContactTypeID;
                     sw.WriteLine(toWrite);
                 }
+
+                MessageBox.Show("Successfully exported to file!","Export status", MessageBoxButtons.OKCancel);
             }
+        }
+
+        private void btnImport_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog ofd = new OpenFileDialog();
+            ofd.Filter = "Text files (*.txt)|*.txt";
+            if (ofd.ShowDialog() == DialogResult.OK)
+            {
+                using (StreamReader sw = new StreamReader(ofd.FileName))
+                {
+                    string line = "";
+
+                    Contacts = new List<ContactModel>();
+
+                    while ((line = sw.ReadLine()) != null)
+                    {
+                        var importData = line.Split(';');
+                        ContactModel newContact = new ContactModel
+                        {
+                            FirstName = importData[0],
+                            LastName = importData[1],
+                            Address = importData[2],
+                            Phone = importData[3],                            
+                            InsertDate = DateTime.Parse(importData[4]),
+                            ContactTypeID = Int32.Parse(importData[5])
+                        };
+                        Contacts.Add(newContact);
+                    }
+
+                    ContactsService.ImportContacts(Contacts);
+                    dataGridContacts.DataSource = null;
+                    dataGridContacts.Update();
+                    dataGridContacts.Refresh();
+                    SetDataGridOptions();
+                    MessageBox.Show("Successfully imported from file!", "Import status", MessageBoxButtons.OKCancel);
+                }
+            }
+        }
+
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            ContactsService.DeleteAllContacts();
+            Contacts = null;
+            dataGridContacts.DataSource = null;
+            dataGridContacts.Update();
+            dataGridContacts.Refresh();
+            MessageBox.Show("Successfully deleted all contacts!", "Delete status", MessageBoxButtons.OKCancel);
         }
     }
 }

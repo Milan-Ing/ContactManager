@@ -48,6 +48,16 @@ namespace ContactManager.Model.Services
             }
         }
 
+        public static void DeleteAllContacts()
+        {
+            using (var context = new ContactManagerDBEntities())
+            {
+                context.Contacts.RemoveRange(context.Contacts);
+
+                context.SaveChanges();
+            }
+        }
+
         public static void AddContact(ContactModel c)
         {
             using (var context = new ContactManagerDBEntities())
@@ -62,6 +72,32 @@ namespace ContactManager.Model.Services
                     InsertDate = c.InsertDate
                 };
                 context.Contacts.Add(toAdd);
+
+                context.SaveChanges();
+            }
+        }
+
+        public static void ImportContacts(List<ContactModel> contacts)
+        {
+            using (var context = new ContactManagerDBEntities())
+            {
+                List<Contact> toAdd = new List<Contact>();
+                foreach (var c in contacts)
+                {
+                    Contact newContact = new Contact
+                    {
+                        FirstName = c.FirstName,
+                        LastName = c.LastName,
+                        Phone = c.Phone,
+                        Address = c.Address,
+                        ContactTypeID = c.ContactTypeID,
+                        InsertDate = c.InsertDate
+                    };
+
+                    toAdd.Add(newContact);
+                }
+                
+                context.Contacts.AddRange(toAdd);
 
                 context.SaveChanges();
             }
