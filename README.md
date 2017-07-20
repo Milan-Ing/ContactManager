@@ -1,2 +1,0 @@
-# ZanimacijaDoPonedeljka
-Nema description.

@@ -37,9 +37,11 @@
             this.txtLName = new System.Windows.Forms.TextBox();
             this.txtAdr = new System.Windows.Forms.TextBox();
             this.txtPhone = new System.Windows.Forms.TextBox();
-            this.txtDate = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnSubmit = new System.Windows.Forms.Button();
+            this.btnClose = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
+            this.cmbTypes = new System.Windows.Forms.ComboBox();
+            this.dateTime = new System.Windows.Forms.DateTimePicker();
             this.SuspendLayout();
             // 
             // label1
@@ -81,7 +83,7 @@
             // label5
             // 
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(12, 229);
+            this.label5.Location = new System.Drawing.Point(12, 287);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(100, 23);
             this.label5.TabIndex = 4;
@@ -115,42 +117,64 @@
             this.txtPhone.Size = new System.Drawing.Size(173, 20);
             this.txtPhone.TabIndex = 8;
             // 
-            // txtDate
+            // btnSubmit
             // 
-            this.txtDate.Location = new System.Drawing.Point(15, 255);
-            this.txtDate.Name = "txtDate";
-            this.txtDate.Size = new System.Drawing.Size(173, 20);
-            this.txtDate.TabIndex = 9;
+            this.btnSubmit.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.btnSubmit.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSubmit.Location = new System.Drawing.Point(15, 347);
+            this.btnSubmit.Name = "btnSubmit";
+            this.btnSubmit.Size = new System.Drawing.Size(75, 23);
+            this.btnSubmit.TabIndex = 10;
+            this.btnSubmit.Text = "Submit";
+            this.btnSubmit.UseVisualStyleBackColor = true;
+            this.btnSubmit.Click += new System.EventHandler(this.btnSubmit_Click);
             // 
-            // button1
+            // btnClose
             // 
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(15, 289);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 10;
-            this.button1.Text = "Submit";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClose.Location = new System.Drawing.Point(113, 347);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(75, 23);
+            this.btnClose.TabIndex = 11;
+            this.btnClose.Text = "Close";
+            this.btnClose.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // label6
             // 
-            this.button2.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(113, 289);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 11;
-            this.button2.Text = "Close";
-            this.button2.UseVisualStyleBackColor = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(12, 235);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(100, 23);
+            this.label6.TabIndex = 12;
+            this.label6.Text = "Phone number:";
+            // 
+            // cmbTypes
+            // 
+            this.cmbTypes.FormattingEnabled = true;
+            this.cmbTypes.Location = new System.Drawing.Point(15, 257);
+            this.cmbTypes.Name = "cmbTypes";
+            this.cmbTypes.Size = new System.Drawing.Size(173, 21);
+            this.cmbTypes.TabIndex = 13;
+            // 
+            // dateTime
+            // 
+            this.dateTime.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTime.Location = new System.Drawing.Point(18, 309);
+            this.dateTime.Name = "dateTime";
+            this.dateTime.Size = new System.Drawing.Size(170, 20);
+            this.dateTime.TabIndex = 14;
             // 
             // FormContact
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(203, 324);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.txtDate);
+            this.ClientSize = new System.Drawing.Size(203, 381);
+            this.Controls.Add(this.dateTime);
+            this.Controls.Add(this.cmbTypes);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.btnClose);
+            this.Controls.Add(this.btnSubmit);
             this.Controls.Add(this.txtPhone);
             this.Controls.Add(this.txtAdr);
             this.Controls.Add(this.txtLName);
@@ -181,8 +205,10 @@
         private System.Windows.Forms.TextBox txtLName;
         private System.Windows.Forms.TextBox txtAdr;
         private System.Windows.Forms.TextBox txtPhone;
-        private System.Windows.Forms.TextBox txtDate;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnSubmit;
+        private System.Windows.Forms.Button btnClose;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.ComboBox cmbTypes;
+        private System.Windows.Forms.DateTimePicker dateTime;
     }
 }

@@ -50,5 +50,41 @@ namespace ContactManager.Model.Services
                 context.SaveChanges();
             }
         }
+
+        public static void AddContact(ContactModel c)
+        {
+            using (var context = new ContactManagerDBEntities())
+            {
+                Contact toAdd = new Contact
+                {
+                    FirstName = c.FirstName,
+                    LastName = c.LastName,
+                    Phone = c.Phone,
+                    Address = c.Address,
+                    ContactTypeID = c.ContactTypeID,
+                    InsertDate = c.InsertDate
+                };
+                context.Contacts.Add(toAdd);
+
+                context.SaveChanges();
+            }
+        }
+
+        public static void UpdateContact(ContactModel c)
+        {
+            using (var context = new ContactManagerDBEntities())
+            {
+                Contact toUpdate = context.Contacts.Where(x => x.ContactID == c.ContactID).FirstOrDefault();
+
+                toUpdate.FirstName = c.FirstName;
+                toUpdate.LastName = c.LastName;
+                toUpdate.Address = c.Address;
+                toUpdate.ContactTypeID = c.ContactTypeID;
+                toUpdate.InsertDate = c.InsertDate;
+                toUpdate.Phone = c.Phone;
+
+                context.SaveChanges();
+            }
+        }
     }
 }

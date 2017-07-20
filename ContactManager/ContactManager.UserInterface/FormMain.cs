@@ -19,11 +19,7 @@ namespace ContactManager.UserInterface
         public FormMain()
         {
             InitializeComponent();
-            Contacts = ContactsService.GetContacts();
-            dataGridContacts.DataSource = Contacts;
-            dataGridContacts.Columns["ContactID"].Visible = false;
-            dataGridContacts.Columns["ContactTypeID"].Visible = false;
-            dataGridContacts.Columns["ContactType"].Name = "Contact type";
+            SetDataGridOptions();
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -31,14 +27,27 @@ namespace ContactManager.UserInterface
             Close();
         }
 
+        public void SetDataGridOptions()
+        {
+            Contacts = ContactsService.GetContacts();
+            dataGridContacts.DataSource = Contacts;
+            dataGridContacts.Columns["ContactID"].Visible = false;
+            dataGridContacts.Columns["ContactTypeID"].Visible = false;
+            dataGridContacts.Columns["ContactType"].Name = "Contact type";
+        }
+
         private void btnUpdate_Click(object sender, EventArgs e)
         {
             if (dataGridContacts.SelectedRows.Count != 1)
                 return;
-            var frm = new FormContact();
-            frm.Contact = (ContactModel)dataGridContacts.CurrentRow.DataBoundItem;
-            frm.FillTextBoxes();
-            frm.ShowDialog();
+            var frm = new FormContact((ContactModel)dataGridContacts.CurrentRow.DataBoundItem);
+            if (DialogResult.OK == frm.ShowDialog())
+            {
+                dataGridContacts.DataSource = null;
+                dataGridContacts.Update();
+                dataGridContacts.Refresh();
+                SetDataGridOptions();
+            }
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
@@ -46,9 +55,23 @@ namespace ContactManager.UserInterface
             if (dataGridContacts.SelectedRows.Count != 1)
                 return;
             var contact = (ContactModel)dataGridContacts.CurrentRow.DataBoundItem;
-            Contacts.Remove(contact);
-            dataGridContacts.DataSource = Contacts;
             ContactsService.DeleteContact(contact);
+            dataGridContacts.DataSource = null;
+            dataGridContacts.Update();
+            dataGridContacts.Refresh();
+            SetDataGridOptions();
+        }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            var frm = new FormContact();
+            if (DialogResult.OK == frm.ShowDialog())
+            {
+                dataGridContacts.DataSource = null;
+                dataGridContacts.Update();
+                dataGridContacts.Refresh();
+                SetDataGridOptions();
+            }
         }
     }
 }

@@ -52,6 +52,7 @@
     <Compile Include="Model\ContactTypeModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\ContactsService.cs" />
+    <Compile Include="Services\ContactTypeService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ContactManager.Data\ContactManager.Data.csproj">
